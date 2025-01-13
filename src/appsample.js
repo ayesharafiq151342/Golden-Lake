@@ -1,65 +1,68 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Login from './login & signup/login';
-import Signuppage from './login & signup/signuppage';
 import Home from './pages/home';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Adminstrator from './pages/admistraction/addminstrator';
+import Application from './pages/admistraction/application';
+import Accountspage from './pages/accounts/accont';
+import Inventorypage from './pages/admistraction/inventorypage'
+import Purchasepage from './pages/admistraction/purchasepage'
+import Salepage from './pages/admistraction/salepage';
+import Project from './pages/admistraction/projectpage';
+import Salereturn from './pages/accounts/salereturn';
 
-import Adminstrator from './pages/addminstrator';
-import Application from './pages/application';
-import Accountspage from './pages/accont';
-import Inventorypage from './pages/inventorypage';
-import Purchasepage from './pages/purchasepage';
-import Salepage from './pages/salepage';
-import Project from './pages/projectpage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSignup, setIsSignup] = useState(true); // Start with the signup page
-
-  const navigate = useNavigate();
+  const [isDashboard, setIsDashboard] = useState(false);
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
-    navigate('/home'); // Redirect to Administrator page
+    setIsDashboard(true);
   };
 
   const handleSignupSwitch = () => {
     setIsSignup(false); // Switch to login page after signup
   };
 
-  return (
-    <div>
-      {!isLoggedIn ? (
-        // Conditional rendering for Login/Signup
-        isSignup ? (
-          <Signuppage onSignupSwitch={handleSignupSwitch} />
-        ) : (
-          <Login onLoginSuccess={handleLoginSuccess} onSignupSwitch={handleSignupSwitch} />
-        )
-      ) : (
-        // Render Routes if logged in
-        <Routes>
-          <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/addminstrator" element={<Adminstrator />} />
-          <Route path="/application" element={<Application />} />
-          <Route path="/accont" element={<Accountspage />} />
-          <Route path="/inventorypage" element={<Inventorypage />} />
-          <Route path="/purchasepage" element={<Purchasepage />} />
-          <Route path="/salepage" element={<Salepage />} />
-          <Route path="/projectpage" element={<Project />} />
-        </Routes>
+  return (<>
+    
+    {/* <div>
+      {isSignup && !isLoggedIn && (
+        <Signuppage onSignupSwitch={handleSignupSwitch} />
       )}
-    </div>
-  );
-}
+      {!isLoggedIn && !isSignup && (
+        <Login onLoginSuccess={handleLoginSuccess} onSignupSwitch={handleSignupSwitch} />
+      )}
+      {isLoggedIn && isDashboard && (
+           
+      )}
+    </div> */}
+    
+    
+  <BrowserRouter>
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/addminstrator" element={<Adminstrator/> }/>
+    <Route path="/application" element={<Application />} />
+    <Route path="/accont" element={<Accountspage />} />
+    <Route path="/inventorypage" element={<Inventorypage />} />
+    <Route path="/purchasepage" element={<Purchasepage />} />
+    <Route path="/salepage" element={<Salepage />} />
+    <Route path="/projectpage" element={<Project />} />
+    <Route path="/salereturn" element={<Salereturn />} />
 
-export default function AppWrapper() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/*" element={<App />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    
+
+
+
+  
+  
+   
+    {/* Define other routes */}
+  </Routes>
+</BrowserRouter></>
+);
 }
