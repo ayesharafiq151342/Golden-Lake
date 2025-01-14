@@ -125,7 +125,7 @@ const [Purchase, setPurchase] = useState(false)
                 </li>
                 <li>
                   <NavLink
-                    to="/Make_receip"
+                    to="/Purchase_make"
                     className="block px-6 py-2 hover:bg-gray-700"
                     activeClassName="bg-gray-700"
                   >
@@ -138,7 +138,7 @@ const [Purchase, setPurchase] = useState(false)
                     className="block px-6 py-2 hover:bg-gray-700"
                     activeClassName="bg-gray-700"
                   >
-                    VINDORS
+                    VENDORS
                   </NavLink>
                 </li>
                 <li>

@@ -104,6 +104,8 @@ import Purchase_inoice from './pages/accounts/purchaseinvoice';
 import Purchase_inoice_form from './pages/accounts/Purchase_inoice_form';
 import Purchase_Retrun from './pages/accounts/Purchase_retutn';
 import Purchase_Retrun_form from './pages/accounts/Purchase_retrun_form';
+import Purchase_make from './pages/accounts/Purchase_make';
+import PaymentForm from './pages/accounts/Purchase_payment_form';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSignup, setIsSignup] = useState(true); // Start with the signup page
@@ -161,7 +163,13 @@ function App() {
         <Route path="/Purchase_inoice_form" element={<Purchase_inoice_form/>} />
         <Route path="/Purchase_retutn" element={<Purchase_Retrun/>} />
         <Route path="/Purchase_Retrun_form" element={<Purchase_Retrun_form/>} />
+        <Route path="/Purchase_make" element={<Purchase_make/>} />
+        <Route path="/Purchase_payment_form" element={<PaymentForm/>} />
 
+        
+    
+
+       
        
 
 

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 
 import { X } from 'lucide-react';
 import imagegmail from './images/imagegmail.jpg';
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link } from "react-router-dom";
+import { Sidebar } from '../../components/slider';
 
 function Make_receipt() {   const navigate = useNavigate();
 
@@ -35,11 +36,12 @@ function Make_receipt() {   const navigate = useNavigate();
         {
           id: 'RV-0001',
           transactionCode: 'SR-0001',
+          Coustmer:"ALI",
           transactionDate: '19-11-2024',
           status: 'Approved',
           PaymentAmount:"3028103",
           PaymentType:'reacived',
-          Coustmer:"ALI",
+       
          
 
         },
@@ -103,123 +105,48 @@ function Make_receipt() {   const navigate = useNavigate();
     // setIsFormOpen(false);
   };
 
-  const toggleSalesMenu = () => setIsSalesOpen(!isSalesOpen); 
-    const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
     const filteredEntries = entries.filter(entry =>
         entry.Coustmer.toLowerCase().includes(searchQuery.toLowerCase())
     );
     return (
-        <div className="min-h-screen flex ">
-            
-
-            <div className="flex-1 flex w-96">
-                
-                {/* Sidebar */}
-                <aside
-                    className={`bg-white shadow-md z-20 fixed md:relative inset-y-0 transition-all duration-300 ease-in-out
-                        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-                        md:translate-x-0 md:w-64`}
-                >
-                    <div className="flex justify-between items-center px-6 py-4 border-b">
-                        <div className="font-bold text-lg">Golden Lake</div>
-                        <button
-                            onClick={toggleSidebar}
-                            className="text-gray-500 hover:text-gray-700 md:hidden"
-                        >
-                            <X size={24} />
-                        </button>
-                    </div>
-                    <nav className="mt-4">
-                        <ul className="space-y-2">
-                            {[
-                                { name: 'Dashboard', href: '/account' },
-                                { name: 'JOURNAL ENTRY', href: '/journal' },
-                          
-                                {
-                                    name: 'SALES',
-                                    href: '#',
-                                    onClick: toggleSalesMenu,
-                                    hasSubMenu: true
-                                },
-                                { name: 'PURCHASE', href: '/currency' },
-                                { name: 'SETUP', href: '/master-accounts' },
-                                { name: 'REPORTS', href: '/tokens' },
-                            ].map((item, index) => (
-                                <li key={index}>
-                                    {item.hasSubMenu ? (
-                                        <div>
-                                            <button
-                                                className="block px-6 py-2 hover:bg-gray-200 w-full text-left"
-                                                onClick={item.onClick}
-                                            >
-                                                {item.name}
-                                            </button>
-                                            {isSalesOpen && (
-                                                <ul className="pl-8 space-y-2">
-                                                    <li>
-                                                        <a
-                                                            href="/saleinvoice"
-                                                            className="block px-6 py-2 hover:bg-gray-200"
-                                                        >
-                                                            Sale Invoice
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a
-                                                            href="/sale_entry"
-                                                            className="block px-6 py-2 hover:bg-gray-200"
-                                                        >
-                                                          Sale Return
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a
-                                                            href="/make_receipt"
-                                                            className="block px-6 py-2 hover:bg-gray-200"
-                                                        >
-                                                            Sale Page 3
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            )}
-                                        </div>
-                                    ) : (
-                                        <a
-                                            href={item.href}
-                                            className="block px-6 py-2 hover:bg-gray-200"
-                                        >
-                                            {item.name}
-                                        </a>
-                                    )}
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
-                </aside>
-
-                {/* Main Content */}
-                <main className="flex-1 p-4 md:p-8 overflow-auto">
-                  {/* Header */}
-            <header className=" flex justify-between items-center bg-gradient-to-r from-[#044f8c] via-[#098bc2] to-[#07bbd6] border-b rounded-full p-4">
+        <div className="min-h-screen flex bg-gray-100">
+        {/* Sidebar */}
+  
+        <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
+  
+        {/* Overlay when sidebar is open */}
+        {isSidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-10 md:hidden"
+            onClick={toggleSidebar}
+          ></div>
+        )}
+  
+        <main className="flex-1 w-96 lg:ml-60 p-8">
+  
+          <header className=" flex justify-between items-center bg-gradient-to-r from-[#044f8c] via-[#098bc2] to-[#07bbd6] border-b rounded-full p-4">
             <button
-                        onClick={toggleSidebar}
-                        className="mr-4 w-8  ml-4 h-8 bg-white rounded-full flex items-center justify-center shadow-lg md:hidden"
-                    >
-                        <span className="text-gray-700 text-2xl">☰</span>
-                    </button> <div className="flex items-center">
-                    {/* Hamburger Menu */}
-                  
-                    <h1 className="text-2xl text-white font-bold">Administration</h1>
-                </div>
-                {/* Logo */}
-                <div className="flex items-center space-x-4">
-                    <img
-                        src={imagegmail}
-                        alt="Golden Lake Logo"
-                        className="h-10 w-10 object-contain rounded-full"
-                    />
-                </div>
-            </header>
+              onClick={toggleSidebar}
+              className="mr-4 w-8  ml-4 h-8 bg-white rounded-full flex items-center justify-center shadow-lg md:hidden"
+            >
+              <span className="text-gray-700 text-2xl">☰</span>
+            </button> <div className="flex items-center">
+              {/* Hamburger Menu */}
+  
+              <h1 className="text-2xl text-white font-bold"><Link to='/'>Accounts Management</Link></h1>
+            </div>
+            {/* Logo */}
+            <div className="flex items-center space-x-4">
+              <img
+                src={imagegmail}
+                alt="Golden Lake Logo"
+                className="h-10 w-10 object-contain rounded-full"
+              />
+            </div>
+  
+          </header>
             <div className="min-h-52 bg-gray-50 rounded-xl">
             <div className=" m-7  ">
             
@@ -276,12 +203,13 @@ function Make_receipt() {   const navigate = useNavigate();
                                                     <input type="checkbox" className="rounded" />
                                                 </th>
                                                 <th className="p-3 text-left font-medium">TransactionCode</th>
-                                                <th className="p-3 text-left font-medium bg-green">transaction Date</th>
-                                                 <th className="p-3 text-left font-medium bg-green">Status</th>
+                                                <th className="p-3 text-left font-medium">Customer</th>
+                                                  <th className="p-3 text-left font-medium bg-green">Status</th>
                                                  <th className="p-3 text-left font-medium bg-green">Payment Ammount</th>
                                                  <th className="p-3 text-left font-medium bg-green">Payment Type</th>
-
-                                                <th className="p-3 text-left font-medium">Customer</th>
+                                                 <th className="p-3 text-left font-medium bg-green">transaction Date</th>
+                                              
+    
                                             
                                             </tr>
                                         </thead>
@@ -292,8 +220,9 @@ function Make_receipt() {   const navigate = useNavigate();
                                                         <input type="checkbox" className="rounded" />
                                                     </td>
                                                     <td className="p-3">{entry.transactionCode}</td>
-                                                   
-                                                    <td className="p-3">{entry.transactionDate}</td>
+                                                             
+                                                    <td className="p-3">{entry.Coustmer}</td>
+                                                    
                                                     <td className="p-3">
                                                         <span className={`px-2 py-1 rounded-full text-xs ${entry.status === 'Approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
                                                             {entry.status}
@@ -301,8 +230,8 @@ function Make_receipt() {   const navigate = useNavigate();
                                                     </td>
                                                     <td className="p-3">{entry.PaymentAmount}</td>
                                                     <td className="p-3">{entry.PaymentType}</td>
-                                                    
-                                                    <td className="p-3">{entry.Coustmer}</td>
+                                                    <td className="p-3">{entry.transactionDate}</td>
+                                          
                                                   
                                                 </tr>
                                             ))}
@@ -357,7 +286,7 @@ function Make_receipt() {   const navigate = useNavigate();
                     ></div>
                 )}
             </div>
-        </div>
+      
     );
 }
 
