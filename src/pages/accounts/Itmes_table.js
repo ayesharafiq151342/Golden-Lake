@@ -34,13 +34,75 @@ function Items_Table() {
     };
   
     const entries = [
-        {
+        { copmany:"Multi-Techno Integrated Solutions Pvt. Ltd0000",
           Itemcode: '0002', 
           Coustmer:"ALI",
-          ItemsCataegory: 'b',
+          ItemsCataegory: 'Electronics',
           ItemType:"good",
           SalePrice:"as",
-         
+         purchaeitem:"yes",
+         SaleItem:"ytes",
+          CratedDate: '19-11-2024',duedate: '19-11-2024',
+
+        },
+        { copmany:"Multi-Techno Integrated Solutions Pvt. Ltd0000",
+          Itemcode: '0002', 
+          Coustmer:"ALI",
+          ItemsCataegory: 'Electronics',
+          ItemType:"good",
+          SalePrice:"as",
+         purchaeitem:"yes",
+         SaleItem:"ytes",
+          CratedDate: '19-11-2024',duedate: '19-11-2024',
+
+        },  { copmany:"Multi-Techno Integrated Solutions Pvt. Ltd0000",
+          Itemcode: '0002', 
+          Coustmer:"ALI",
+          ItemsCataegory: 'Electronics',
+          ItemType:"good",
+          SalePrice:"as",
+         purchaeitem:"yes",
+         SaleItem:"ytes",
+          CratedDate: '19-11-2024',duedate: '19-11-2024',
+
+        },  { copmany:"Multi-Techno Integrated Solutions Pvt. Ltd0000",
+          Itemcode: '0002', 
+          Coustmer:"ALI",
+          ItemsCataegory: 'Electronics',
+          ItemType:"good",
+          SalePrice:"as",
+         purchaeitem:"yes",
+         SaleItem:"ytes",
+          CratedDate: '19-11-2024',duedate: '19-11-2024',
+
+        },  { copmany:"Multi-Techno Integrated Solutions Pvt. Ltd0000",
+          Itemcode: '0002', 
+          Coustmer:"ALI",
+          ItemsCataegory: 'Electronics',
+          ItemType:"good",
+          SalePrice:"as",
+         purchaeitem:"yes",
+         SaleItem:"ytes",
+          CratedDate: '19-11-2024',duedate: '19-11-2024',
+
+        },  { copmany:"Multi-Techno Integrated Solutions Pvt. Ltd0000",
+          Itemcode: '0002', 
+          Coustmer:"ALI",
+          ItemsCataegory: 'Electronics',
+          ItemType:"good",
+          SalePrice:"as",
+         purchaeitem:"yes",
+         SaleItem:"ytes",
+          CratedDate: '19-11-2024',duedate: '19-11-2024',
+
+        },  { copmany:"Multi-Techno Integrated Solutions Pvt. Ltd0000",
+          Itemcode: '0002', 
+          Coustmer:"ALI",
+          ItemsCataegory: 'Electronics',
+          ItemType:"good",
+          SalePrice:"as",
+         purchaeitem:"yes",
+         SaleItem:"ytes",
           CratedDate: '19-11-2024',duedate: '19-11-2024',
 
         },
@@ -108,11 +170,11 @@ onClick={toggleSidebar}
                             {/* Header */}
                             <div className="flex justify-between items-center">
                                 <div>
-                                    <h1 className="text-2xl font-semibold">Sale Invoice</h1>
+                                    <h1 className="text-2xl font-semibold">Item Details </h1>
                                     <div className="flex items-center gap-2 text-sm text-gray-500">
                                         <span>Accounts Management</span>
                                         <span className="text-gray-400">/</span>
-                                        <span>Sale Invoice </span>
+                                        <span>Item  </span>
                                     </div>
                                 </div>
                                 <button 
@@ -148,25 +210,34 @@ onClick={toggleSidebar}
                                     <table className="w-full">
                                         <thead className="bg-gray-50">
                                             <tr>
+                                            <th className="p-3 text-left font-medium">Company </th>
                                                 
                                                 <th className="p-3 text-left font-medium">Item Code</th>
                                                 <th className="p-3 text-left font-medium">Name</th>
                                                 <th className="p-3 text-left font-medium">Item Category</th>
                                                 <th className="p-3 text-left font-medium">Item Types</th>
+                                                <th className="p-3 text-left font-medium">Sale Price</th>
+                                        
+                                                <th className="p-3 text-left font-medium">Sale Item</th>
+
                                                 <th className="p-3 text-left font-medium">Crated  Date</th>
-                                                <th className="p-3 text-left font-medium">Due Date</th>
+                                                <th className="p-3 text-left font-medium">Sale Item </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {filteredEntries.map((entry) => (
                                                 <tr key={entry.id} className="border-t hover:bg-gray-50">
+                                                    <td className="p-3">{entry.copmany}</td>
                                                    
                                                     <td className="p-3">{entry.Itemcode}</td>
                                                     <td className="p-3">{entry.Coustmer}</td>
                                                           <td className="p-3">{entry.ItemsCataegory}</td>
                                                     <td className="p-3">{entry.ItemType}</td>
                                                     <td className="p-3">{entry.SalePrice}</td>
+                                                    <td className="p-3">{entry.SaleItem}</td>
+
                                                     <td className="p-3">{entry.CratedDate}</td>
+                                                    <td className="p-3">{entry.purchaeitem}</td>
                                                 </tr>
                                             ))}
                                         </tbody>

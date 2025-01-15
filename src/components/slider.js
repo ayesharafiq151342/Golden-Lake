@@ -9,10 +9,12 @@ interface SidebarProps {
 
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const [isSalesOpen, setIsSalesOpen] = useState(false);
-const [Purchase, setPurchase] = useState(false)
-  const toggleSalesMenu = () => setIsSalesOpen(!isSalesOpen);
-  const togglepurchase = () => setPurchase(!isSalesOpen);
+  const [purchase, setPurchase] = useState(false);
+  const [setup, setSetup] = useState(false);
 
+  const toggleSalesMenu = () => setIsSalesOpen(!isSalesOpen);
+  const togglePurchase = () => setPurchase(!purchase);
+  const toggleSetup = () => setSetup(!setup);
 
   return (
     <aside
@@ -30,8 +32,9 @@ const [Purchase, setPurchase] = useState(false)
           <li>
             <NavLink
               to="/account"
-              className="block px-6 py-2 hover:bg-gray-700"
-              activeClassName="bg-red-700"
+              className={({ isActive }) =>
+                isActive ? 'block px-6 py-2 bg-red-700' : 'block px-6 py-2 hover:bg-gray-700'
+              }
             >
               Dashboard
             </NavLink>
@@ -39,14 +42,19 @@ const [Purchase, setPurchase] = useState(false)
           <li>
             <NavLink
               to="/journal"
-              className="block px-6 py-2 hover:bg-gray-700"
-              activeClassName="bg-red-700"
+              className={({ isActive }) =>
+                isActive ? 'block px-6 py-2 bg-red-700' : 'block px-6 py-2 hover:bg-gray-700'
+              }
             >
               JOURNAL ENTRY
             </NavLink>
           </li>
           <li>
-            <button onClick={toggleSalesMenu} className="block px-6 py-2 w-full text-left hover:bg-gray-700">
+            <button
+              aria-expanded={isSalesOpen ? 'true' : 'false'}
+              onClick={toggleSalesMenu}
+              className="block px-6 py-2 w-full text-left hover:bg-gray-700"
+            >
               SALES
             </button>
             {isSalesOpen && (
@@ -54,8 +62,9 @@ const [Purchase, setPurchase] = useState(false)
                 <li>
                   <NavLink
                     to="/saleinvoice"
-                    className="block px-6 py-2 hover:bg-gray-700"
-                    activeClassName="bg-gray-700"
+                    className={({ isActive }) =>
+                      isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
+                    }
                   >
                     Sale Invoice
                   </NavLink>
@@ -63,26 +72,29 @@ const [Purchase, setPurchase] = useState(false)
                 <li>
                   <NavLink
                     to="/salereturn"
-                    className="block px-6 py-2 hover:bg-gray-700"
-                    activeClassName="bg-gray-700"
+                    className={({ isActive }) =>
+                      isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
+                    }
                   >
-                   SALE RERURN 
+                    SALE RETURN
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
                     to="/Make_receip"
-                    className="block px-6 py-2 hover:bg-gray-700"
-                    activeClassName="bg-gray-700"
+                    className={({ isActive }) =>
+                      isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
+                    }
                   >
-                   MAKE RECIPT
+                    MAKE RECEIPT
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
                     to="/coustmer"
-                    className="block px-6 py-2 hover:bg-gray-700"
-                    activeClassName="bg-gray-700"
+                    className={({ isActive }) =>
+                      isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
+                    }
                   >
                     Customer
                   </NavLink>
@@ -90,62 +102,9 @@ const [Purchase, setPurchase] = useState(false)
                 <li>
                   <NavLink
                     to="/Itmes_table"
-                    className="block px-6 py-2 hover:bg-gray-700"
-                    activeClassName="bg-gray-700"
-                  >
-                    ITMES
-                  </NavLink>
-                </li>
-              </ul>
-            )}
-          </li>
-          <li>
-            <button onClick={togglepurchase} className="block px-6 py-2 w-full text-left hover:bg-gray-700">
-            PURCHASE
-            </button>
-            {Purchase && (
-              <ul className="pl-8 space-y-2">
-                <li>
-                  <NavLink
-                    to="/purchase_invoice"
-                    className="block px-6 py-2 hover:bg-gray-700"
-                    activeClassName="bg-gray-700"
-                  >
-                    PURCHASE Invoice
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/Purchase_retutn"
-                    className="block px-6 py-2 hover:bg-gray-700"
-                    activeClassName="bg-gray-700"
-                  >
-                   PURCHASE RETURN 
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/Purchase_make"
-                    className="block px-6 py-2 hover:bg-gray-700"
-                    activeClassName="bg-gray-700"
-                  >
-                   MAKE PAYMENT
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/coustmer"
-                    className="block px-6 py-2 hover:bg-gray-700"
-                    activeClassName="bg-gray-700"
-                  >
-                    VENDORS
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/Itmes_table"
-                    className="block px-6 py-2 hover:bg-gray-700"
-                    activeClassName="bg-gray-700"
+                    className={({ isActive }) =>
+                      isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
+                    }
                   >
                     ITEMS
                   </NavLink>
@@ -153,21 +112,118 @@ const [Purchase, setPurchase] = useState(false)
               </ul>
             )}
           </li>
-        
           <li>
-            <NavLink
-              to="/master-accounts"
-              className="block px-6 py-2 hover:bg-gray-700"
-              activeClassName="bg-red-700"
+            <button
+              aria-expanded={purchase ? 'true' : 'false'}
+              onClick={togglePurchase}
+              className="block px-6 py-2 w-full text-left hover:bg-gray-700"
             >
-              SETUP
-            </NavLink>
+              PURCHASE
+            </button>
+            {purchase && (
+              <ul className="pl-8 space-y-2">
+                <li>
+                  <NavLink
+                    to="/purchase_invoice"
+                    className={({ isActive }) =>
+                      isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
+                    }
+                  >
+                    PURCHASE Invoice
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/Purchase_retutn"
+                    className={({ isActive }) =>
+                      isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
+                    }
+                  >
+                    PURCHASE RETURN
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/Purchase_make"
+                    className={({ isActive }) =>
+                      isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
+                    }
+                  >
+                    MAKE PAYMENT
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/Purchase_vendor"
+                    className={({ isActive }) =>
+                      isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
+                    }
+                  >
+                    VENDORS
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/Purchase_items"
+                    className={({ isActive }) =>
+                      isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
+                    }
+                  >
+                    ITEMS
+                  </NavLink>
+                </li>
+              </ul>
+            )}
+          </li>
+          <li>
+            <button
+              aria-expanded={setup ? 'true' : 'false'}
+              onClick={toggleSetup}
+              className="block px-6 py-2 w-full text-left hover:bg-gray-700"
+            >
+              SET UP
+            </button>
+            {setup && (
+              <ul className="pl-8 space-y-2">
+                <li>
+                  <NavLink
+                    to="/ChartofAccount"
+                    className={({ isActive }) =>
+                      isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
+                    }
+                  >
+                    CHARTS OF ACCOUNTS
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/tax_code"
+                    className={({ isActive }) =>
+                      isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
+                    }
+                  >
+                    TAX CODE
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/customer_reconcile"
+                    className={({ isActive }) =>
+                      isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
+                    }
+                  >
+                    CUSTOMER RECONCILE
+                  </NavLink>
+                </li>
+              </ul>
+            )}
           </li>
           <li>
             <NavLink
-              to="/tokens"
-              className="block px-6 py-2 hover:bg-gray-700"
-              activeClassName="bg-gray-700"
+              to="/Reports"
+              className={({ isActive }) =>
+                isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
+              }
             >
               REPORTS
             </NavLink>

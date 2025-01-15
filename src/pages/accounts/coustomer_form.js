@@ -46,8 +46,20 @@ export default function CustomerForm() {
  
 
   return (<>
-<div className="w-full  h-96 bg-cover bg-center" style={{ backgroundImage: `url(${compnyimage})` }}>
-  {/* You can add content inside if needed */}
+ <div
+    className="w-full h-96 bg-cover bg-center relative"
+    style={{ backgroundImage: `url(${compnyimage})` }}
+>
+    {/* Close Button */}
+    <div className="absolute top-2 right-2">
+    <a
+        href="/coustmer"
+        className="flex items-center justify-center bg-blue-500 text-black text-xl font-bold w-7 h-7 rounded-full hover:bg-blue-600 hover:text-white transition duration-200"
+    >
+        ×
+    </a>
+</div>
+
 </div>
 
 

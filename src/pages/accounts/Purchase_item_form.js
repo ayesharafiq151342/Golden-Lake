@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-import { X } from 'lucide-react';
 import imagegmail from './images/imagegmail.jpg';
 import { useNavigate , Link } from "react-router-dom";
 import { Sidebar } from '../../components/slider';
 
-const EditItemModal = () => {
+function Purchase_item_form() {
   const [activeTab, setActiveTab] = useState("general");
   const [customerCategory, setCustomerCategory] = useState("");
   const [showModal, setShowModal] = useState(false); // For modal visibility
@@ -291,4 +290,6 @@ onClick={toggleSidebar}
   </div>);
 };
 
-export default EditItemModal;
+
+
+export default Purchase_item_form

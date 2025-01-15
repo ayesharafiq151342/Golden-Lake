@@ -106,6 +106,13 @@ import Purchase_Retrun from './pages/accounts/Purchase_retutn';
 import Purchase_Retrun_form from './pages/accounts/Purchase_retrun_form';
 import Purchase_make from './pages/accounts/Purchase_make';
 import PaymentForm from './pages/accounts/Purchase_payment_form';
+import Purchase_vendor from './pages/accounts/Purchase_vendor';
+import Purchase_vendor_form from './pages/accounts/Purchase_vendor_form';
+import Purchase_items from './pages/accounts/Purchase_items';
+import Purchase_item_form from './pages/accounts/Purchase_item_form';
+import ChartofAccount from './pages/accounts/setup/images/ChartofAccount';
+import EditAccountModal from './pages/accounts/setup/images/Charts_account_edit';
+import Reports from './pages/accounts/setup/images/report';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSignup, setIsSignup] = useState(true); // Start with the signup page
@@ -165,6 +172,16 @@ function App() {
         <Route path="/Purchase_Retrun_form" element={<Purchase_Retrun_form/>} />
         <Route path="/Purchase_make" element={<Purchase_make/>} />
         <Route path="/Purchase_payment_form" element={<PaymentForm/>} />
+        <Route path="/Purchase_vendor" element={<Purchase_vendor/>} />
+        <Route path="/Purchase_vendor_form" element={<Purchase_vendor_form/>} />
+        <Route path="/Purchase_items" element={<Purchase_items/>} />
+        <Route path="/Purchase_item_form" element={<Purchase_item_form/>} />
+        <Route path="/ChartofAccount" element={<ChartofAccount/>} />
+
+                <Route path="/Charts_account_edit" element={<EditAccountModal/>} />
+                <Route path="/Reports" element={<Reports/>} />
+
+
 
         
     
