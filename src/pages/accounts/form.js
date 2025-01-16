@@ -205,7 +205,7 @@ function CreateObjectForm(){
                     placeholder="description"
                     className="w-full p-1 border rounded"
                     value={line.description}
-                    onChange={(e) => updateLine(index, "Descrption", e.target.value)}
+                    onChange={(e) => updateLine(index, "description", e.target.value)}
                   />
                 </td>
                 <td className="border border-gray-300 p-2">

@@ -76,7 +76,7 @@
 // }
 import React, { useState } from 'react';
 import Home from './pages/home';
-
+import InvoiceTable from './pages/accounts/sleectdata';
 import EditItemModal from './pages/accounts/items_form';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Adminstrator from './pages/admistraction/addminstrator';
@@ -98,6 +98,7 @@ import Sale_invoice_form from './pages/accounts/sale_invoice_form';
 import Make_receipt from './pages/accounts/make_receipt';
 import Coustmer_page from './pages/accounts/coustomer';
 import Coustmer_form from './pages/accounts/coustomer_form';
+import Expene_Enitity from './pages/accounts/Expene_Enitity';
 import { Sidebar } from './components/slider';
 import Items_Table from './pages/accounts/Itmes_table';
 import Purchase_inoice from './pages/accounts/purchaseinvoice';
@@ -113,6 +114,8 @@ import Purchase_item_form from './pages/accounts/Purchase_item_form';
 import ChartofAccount from './pages/accounts/setup/images/ChartofAccount';
 import EditAccountModal from './pages/accounts/setup/images/Charts_account_edit';
 import Reports from './pages/accounts/setup/images/report';
+import Setuptex from './pages/accounts/setup/images/setuptex';
+import Expense_form from './pages/accounts/Expense_form';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSignup, setIsSignup] = useState(true); // Start with the signup page
@@ -180,6 +183,16 @@ function App() {
 
                 <Route path="/Charts_account_edit" element={<EditAccountModal/>} />
                 <Route path="/Reports" element={<Reports/>} />
+                <Route path="/setuptex" element={<Setuptex/>} />
+                <Route path="/Expene_Enitity" element={<Expene_Enitity/>} />
+                <Route path="/Expense_form" element={<Expense_form/>} />
+                <Route path="/sleectdata" element={<InvoiceTable/>} />
+
+
+                
+
+                
+
 
 
 
@@ -210,6 +223,7 @@ function App() {
       </Routes>
     </BrowserRouter>
     <div>
+      <InvoiceTable/>
    
     </div>
   </>

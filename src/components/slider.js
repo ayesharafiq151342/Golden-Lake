@@ -13,7 +13,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const [setup, setSetup] = useState(false);
 
   const toggleSalesMenu = () => setIsSalesOpen(!isSalesOpen);
-  const togglePurchase = () => setPurchase(!purchase);
+  const togglePurchase = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setPurchase(prevState => !prevState);
+  };
   const toggleSetup = () => setSetup(!setup);
 
   return (
@@ -47,6 +50,16 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               }
             >
               JOURNAL ENTRY
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/Expene_Enitity"
+              className={({ isActive }) =>
+                isActive ? 'block px-6 py-2 bg-red-700' : 'block px-6 py-2 hover:bg-gray-700'
+              }
+            >
+            Expene_Enitity
             </NavLink>
           </li>
           <li>
@@ -197,7 +210,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 </li>
                 <li>
                   <NavLink
-                    to="/tax_code"
+                    to="/setuptex"
                     className={({ isActive }) =>
                       isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
                     }
@@ -213,6 +226,16 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                     }
                   >
                     CUSTOMER RECONCILE
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/Vendor"
+                    className={({ isActive }) =>
+                      isActive ? 'block px-6 py-2 bg-gray-700' : 'block px-6 py-2 hover:bg-gray-700'
+                    }
+                  >
+                    VENDOOR RECONCILE
                   </NavLink>
                 </li>
               </ul>
@@ -233,3 +256,4 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     </aside>
   );
 }
+

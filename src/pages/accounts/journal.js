@@ -13,58 +13,66 @@ function Journal() {
   const [isSalesOpen, setIsSalesOpen] = useState(false);
   const navigate = useNavigate();
 
-  const entries = [
-    {
-      id: 'JE-0002',
-      transactionCode: 'JE-0002',
-      memo: '',
-      referenceNo: '',
-      status: 'Approved',
-      transactionDate: '19-11-2024',
-      totalCredit: 20,
-      totalDebit: 20
-    },
-    {
-      id: 'JE-0003',
-      transactionCode: 'JE-0003',
-      memo: '',
-      referenceNo: '',
-      status: 'Approved',
-      transactionDate: '20-07-2024',
-      totalCredit: 10,
-      totalDebit: 10
-    },
-    {
-      id: 'JE-0009',
-      transactionCode: 'JE-0009',
-      memo: 'testing the update time 7',
-      referenceNo: 'no refrence number',
-      status: 'Draft',
-      transactionDate: '03-12-2024',
-      totalCredit: 100,
-      totalDebit: 100
-    },
-    {
-      id: 'JE-0010',
-      transactionCode: 'JE-0010',
-      memo: 'test',
-      referenceNo: 'test',
-      status: 'Approved',
-      transactionDate: '02-12-2024',
-      totalCredit: 1,
-      totalDebit: 1
-    },
-    {
-      id: 'JE-0011',
-      transactionCode: 'JE-0011',
-      memo: 'testing time',
-      referenceNo: 'no',
-      status: 'Approved',
-      transactionDate: '04-12-2024',
-      totalCredit: 1,
-      totalDebit: 1
-    },
-  ]
+        
+        const entries = [
+          {
+            id: 'JE-0001',
+            transactionCode: 'JE-0001',
+            memo: 'Test',
+            RefreneceNo: 'No',
+            status:"Approved",
+            transactionDate: '19-11-2024',
+            totalCrated:"70",
+            duedate: '19-11-2024',
+          },
+          {
+            id: 'JE-0002',
+            transactionCode: 'JE-0002',
+            memo: 'no testing',
+            RefreneceNo: 'No',
+            status:"draft",
+            transactionDate: '19-11-2024',
+            totalCrated:"10",
+            duedate: '19-11-2024',
+          },    {
+            id: 'JE-0003',
+            transactionCode: 'JE-0003',
+            memo: 'testing',
+            RefreneceNo: 'No',
+            status:"Approved",
+            transactionDate: '19-11-2024',
+            totalCrated:"20",
+            duedate: '19-11-2024',
+          },
+          {
+            id: 'JE-0004',
+            transactionCode: 'JE-0004',
+            memo: 'testing',
+            RefreneceNo: 'No refenece',
+            status:"Draft",
+            transactionDate: '22-11-2024',
+            totalCrated:"20",
+            duedate: '19-11-2024',
+          }, {
+            id: 'JE-0005',
+            transactionCode: 'JE-0005',
+            memo: 'testing',
+            RefreneceNo: 'testing REFRENECE',
+            status:"Approved",
+            transactionDate: '1-1-2024',
+            totalCrated:"40",
+            duedate: '19-11-2024',
+          }, {
+            id: 'JE-0005',
+            transactionCode: 'JE-0005',
+            memo: 'testing',
+            RefreneceNo: 'No',
+            status:"Aproved",
+            transactionDate: '19-11-2024',
+            totalCrated:"20",
+            duedate: '19-11-2024',
+          },
+        ]
   const handleHeaderClick = () => {
     Navigation('/form')  // Open the form when the header is clicked
   };
@@ -79,6 +87,9 @@ function Journal() {
     const entryStructure = Object.fromEntries(formData.entries())
     console.log('New Journal Entry Structure:', entryStructure);
   };
+  const filteredEntries = entries.filter(entry =>
+    entry.transactionCode.toLowerCase().includes(searchQuery.toLowerCase())
+);
 
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
@@ -145,6 +156,7 @@ function Journal() {
               </button>
             </div>
 
+          
             {/* Search */}
             <div className="relative">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
@@ -152,7 +164,7 @@ function Journal() {
               </svg>
               <input
                 type="text"
-                placeholder="Search by Name"
+                placeholder="Search by Customer"
                 className="pl-10 pr-4 py-2 w-full border rounded-md"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -163,45 +175,40 @@ function Journal() {
             <div className="border rounded-lg overflow-hidden bg-white">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead>
-                    <tr  >
-                      <th
-                        className="p-3 text-left font-medium cursor-pointer"
-                      // Trigger form opening when clicked
-                      >
-                        Transaction Code
-                      </th>
-                      <th className="p-3 text-left font-medium" onClick={handleHeaderClick}>Memo</th>
-                      <th className="p-3 text-left font-medium" onClick={handleHeaderClick}>Reference No</th>
-                      <th className="p-3 text-left font-medium" onClick={handleHeaderClick}>Status</th>
-                      <th className="p-3 text-left font-medium" onClick={handleHeaderClick} >Transaction Date</th>
-                      <th className="p-3 text-right font-medium" onClick={handleHeaderClick}>Total Credit</th>
-                      <th className="p-3 text-right font-medium" onClick={handleHeaderClick}>Total Debit</th>
+                  <thead className="bg-gray-50">
+                    <tr>
+
+                      <th className="p-3 text-left font-medium">Transaction Code</th>
+                      <th className="p-3 text-left font-medium">Memo</th>
+                      <th className="p-3 text-left font-medium">Refrenece No</th>
+                      <th className="p-3 text-left font-medium">Status</th>
+                      <th className="p-3 text-left font-medium">Transaction Date</th>
+                      <th className="p-3 text-left font-medium">Total Cradit  </th>
+                      <th className="p-3 text-left font-medium">Due Date</th>
                     </tr>
                   </thead>
                   <tbody>
-
-                    {entries.map((entry) => (
+                    {filteredEntries.map((entry) => (
                       <tr key={entry.id} className="border-t hover:bg-gray-50">
-                        <td className="p-3" onClick={handleHeaderClick}>
-                          <input type="checkbox" className="rounded" />
+
+                        <td className="p-3"onClick={handleHeaderClick}>{entry.transactionCode}</td>
+                        <td className="p-3"onClick={handleHeaderClick}>{entry.memo}</td>
+
+                         <td className="p-3"onClick={handleHeaderClick}>{entry.RefreneceNo}</td>
+                      
+                        <td className="p-3"onClick={handleHeaderClick}>
+                       < span className={`px-2 py-1 rounded-full text-xs ${
+                entry.status === 'Approved'
+                  ? 'bg-yellow-100 text-yellow-800'
+                  : 'bg-green-100 text-green-800'
+              }`}>
+                {entry.status}
+              </span>
                         </td>
-                        <td className="p-3" onClick={handleHeaderClick}>{entry.transactionCode} </td>
-                        <td className="p-3" onClick={handleHeaderClick}>{entry.memo}</td>
-                        <td className="p-3" onClick={handleHeaderClick}>{entry.referenceNo}</td>
-                        <td className="p-3" onClick={handleHeaderClick}>
-                          <span
-                            className={`px-2 py-1 rounded-full text-xs ${entry.status === 'Approved'
-                                ? 'bg-green-100 text-green-800'
-                                : 'bg-yellow-100 text-yellow-800'
-                              }`}
-                          >
-                            {entry.status}
-                          </span>
-                        </td>
-                        <td className="p-3" onClick={handleHeaderClick}>{entry.transactionDate}</td>
-                        <td className="p-3 text-right" onClick={handleHeaderClick}>{entry.totalCredit}</td>
-                        <td className="p-3 text-right" onClick={handleHeaderClick}>{entry.totalDebit}</td>
+                      
+                        <td className="p-3"onClick={handleHeaderClick}>{entry.transactionDate}</td>
+                        <td className="p-3"onClick={handleHeaderClick}>{entry.totalCrated}</td>
+                        <td className="p-3"onClick={handleHeaderClick}>{entry.duedate}</td>
                       </tr>
                     ))}
                   </tbody>

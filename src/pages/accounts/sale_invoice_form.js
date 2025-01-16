@@ -60,6 +60,7 @@ const Sale_invoice_form = () => {
       warehouse: "",
       memo: "",
       referenceNo: "",
+      duedate:""
     });
   
     const handleCreate = () => {
@@ -332,7 +333,19 @@ const Sale_invoice_form = () => {
             className="p-2 border rounded w-full"
           />
         </div>
-
+        <div>
+          <label className="block mb-1 font-medium" htmlFor="duedate">
+            Due Date
+          </label>
+          <input
+            id="duedate"
+            type="datetime-local"
+            placeholder="Due date"
+            value={formData.duedate}
+            onChange={(e) => setFormData({ ...formData, duedate: e.target.value })}
+            className="p-2 border rounded w-full"
+          />
+        </div>
         {/* Reference Number Field */}
         <div>
           <label className="block mb-1 font-medium" htmlFor="referenceNo">
