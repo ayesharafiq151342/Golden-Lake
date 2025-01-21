@@ -33,7 +33,7 @@ const services = [
     title: 'Inventory Management',
 
     image: hompage4,
-    link: '/inventorypage', 
+    link: '/Dashborad', 
   },
   {
     title: 'Purchase Management',
