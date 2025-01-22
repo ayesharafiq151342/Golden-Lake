@@ -3,8 +3,7 @@
     import imagegmail from '../images/imagegmail.jpg'; // Ensure image path is correct
 
     import { useNavigate, Link } from "react-router-dom";
-
-import { InventorySidebar } from '../../../components/Inventorysidebar';
+import { InventorySidebar } from "../../../components/Inventorysidebar";
     function InventoryCreateForm() {
 
         const [isSidebarOpen, setIsSidebarOpen] = useState(false);

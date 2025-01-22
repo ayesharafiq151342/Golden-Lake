@@ -226,7 +226,7 @@ onClick={toggleSidebar}
                                         </thead>
                                         <tbody>
                                             {filteredEntries.map((entry) => (
-                                                <tr key={entry.id} className="border-t hover:bg-gray-50">
+                                                <tr key={entry.id} className="border-t hover:bg-gray-50" >
                                                     <td className="p-3">{entry.copmany}</td>
                                                    
                                                     <td className="p-3">{entry.Itemcode}</td>

@@ -44,7 +44,7 @@ export function InventorySidebar({ isOpen, onClose }: SidebarProps) {
           </li>
           <li>
             <NavLink
-              to="/Inventory"
+              to="/maininventory"
               className={({ isActive }) =>
                 isActive ? 'block px-6 py-2 bg-red-700' : 'block px-6 py-2 hover:bg-gray-700'
               }

@@ -23,56 +23,16 @@ const [Idfatch, setIdfatch] = useState(null)
   ]);
 
   const data = [
-    {
-      reference: "Ref1",
-      code: "IA-0001",
-      memo: "Note 1",
-      status: "Approved",
-      date: "2024-11-20",
-
-    },
-    {
-      reference: "Ref2",
-      code: "IA-0002",
-      memo: "Note 2",
-      status: "Draft",
-      date: "2024-11-20",
-
-    },
-    {
-      reference: "Ref3",
-      code: "IA-0003",
-      memo: "Note 3",
-      status: "Approved",
-      date: "2024-11-20",
-
-    },
-    {
-      reference: "Ref4",
-      code: "IA-0004",
-      memo: "Note 4",
-      status: "Draft",
-      date: "2024-4-20",
-
-    }, {
-      reference: "Ref5",
-      code: "IA-0005",
-      memo: "Note 5",
-      status: "Approved",
-      date: "2024-1-20",
-
-    }, {
-      reference: "Ref6",
-      code: "IA-0006",
-      memo: "Note 6",
-      status: "Draft",
-      date: "2024-11-20",
-
-    },
+    {reference: "Ref1",code: "IA-0001",memo: "Note 1", status: "Approved", date: "2024-11-20",  },
+    { reference: "Ref2",code: "IA-0002",memo: "Note 2",status: "Draft",date: "2024-11-20",  },
+    { reference: "Ref3",  code: "IA-0003",memo: "Note 3",status: "Approved",date: "2024-11-20"   },
+    {reference: "Ref4", code: "IA-0004", memo: "Note 4",status: "Draft",date: "2024-4-20",   },
+     {reference: "Ref5", code: "IA-0005",  memo: "Note 5",status: "Approved",  date: "2024-1-20", }, 
+     {reference: "Ref6", code: "IA-0006",memo: "Note 6",status: "Draft", date: "2024-11-20", },
   ];
-
-  const handleclick = (code, reference ,memo) => {
-    navigate(`/Uselocation?code=${code}&reference=${reference}&memo=${memo}`); // Redirect to another page with query parameters
+//fatch using loctaion
+  const handleclick = (code,memo , date) => {
+    navigate(`/Uselocation?code=${code}&date=${date}&memo=${memo}`); // Redirect to another page with query parameters
   };
   
   // Filtered data based on search query
@@ -200,7 +160,7 @@ const [Idfatch, setIdfatch] = useState(null)
     <tr
       key={index}
       className="border-b border-gray-200 hover:bg-gray-100 cursor-pointer"
-      onClick={() => handleclick(row.code , row.reference ,row.memo)} // Pass the row code (ID) to the function
+      onClick={() => handleclick(row.code , row.reference ,row.memo ,row.date)} // Pass the row code (ID) to the function
     >
       {visibleColumns.includes("Reference No") && (
         <td className="px-4 py-2">{row.reference}</td>
@@ -253,4 +213,4 @@ const [Idfatch, setIdfatch] = useState(null)
   );
 }
 
-export default Inventory;
+export default Inventory;  

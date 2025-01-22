@@ -118,10 +118,12 @@ import Setuptex from './pages/accounts/setup/images/setuptex';
 import Expense_form from './pages/accounts/Expense_form';
 
 import InventoryManagementpage from './pages/Invoentory/Dashborad';
-import Inventory from './pages/Invoentory/INVENTORYADJUSTMENT/Inventory';
+import Inventory from './pages/Invoentory/INVENTORYADJUSTMENT/maininventory';
 import ColumnSelectorModal from './pages/Invoentory/INVENTORYADJUSTMENT/ColumnManager';
 import InventoryCreateForm from './pages/Invoentory/INVENTORYADJUSTMENT/InventoryCreateForm';
 import LocationUse from './pages/Invoentory/INVENTORYADJUSTMENT/Uselocation';
+
+;
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSignup, setIsSignup] = useState(true); // Start with the signup page
@@ -194,7 +196,7 @@ function App() {
                 <Route path="/Expense_form" element={<Expense_form/>} />
                 <Route path="/sleectdata" element={<InvoiceTable/>} />
                 <Route path="/Dashborad" element={<InventoryManagementpage/>} />
-                <Route path="/Inventory" element={<Inventory/>} />
+                <Route path="/maininventory" element={<Inventory/>} />
                 <Route path="/ColumnManager" element={<ColumnSelectorModal/>} />
                 <Route path="/InventoryCreateForm" element={<InventoryCreateForm/>} />
                 <Route path="/Uselocation" element={<LocationUse/>} />
@@ -240,7 +242,7 @@ function App() {
     </BrowserRouter>
     <div>
     
-   
+ 
     </div>
   </>
   );
